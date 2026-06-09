@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Netlify
+.netlify/
+
+# Claude Code lokale preview
+.claude/
