@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Word vrijwilliger — Een Tweede Thuis</title>
-  <meta name="description" content="Word vrijwilliger bij Een Tweede Thuis. Ons team bestaat uit orthopedagogen, vrijwilligers en taalbuddies die zij aan zij met de jongeren staan." />
+  <meta name="description" content="Word vrijwilliger bij Een Tweede Thuis: vrijwilliger of taalbuddy." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,7 +29,7 @@
         <a href="index.html#team">Het team</a>
         <a href="index.html#bezoek">Bezoek ons</a>
         <a href="vrijwilligers.html" aria-current="page">Vrijwilligers</a>
-        <a class="btn-outline btn-sm" href="#aanmelden">Stel je kandidaat</a>
+        <a class="btn-outline btn-sm" href="#aanmelden" data-reveal-form>Stel je kandidaat</a>
       </nav>
       <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -41,13 +41,13 @@
   <section class="hero hero-sub" id="top">
     <div class="container">
       <p class="eyebrow">Vrijwilligers 🤝</p>
-      <h1>Sta <span class="accent">zij aan zij</span> met onze jongeren.</h1>
+      <h1>Word vrijwilliger</h1>
       <p class="lead">
         Een vast team van orthopedagogen, vrijwilligers en taalbuddies staat zij aan zij
         met jongeren, en schakelt waar nodig door naar gespecialiseerde partners.
       </p>
       <div class="hero-actions">
-        <a class="btn-primary" href="#aanmelden">Stel je kandidaat</a>
+        <a class="btn-primary" href="#aanmelden" data-reveal-form>Stel je kandidaat</a>
         <a class="btn-outline" href="#soorten">Bekijk de soorten vrijwilligers</a>
       </div>
     </div>
@@ -59,19 +59,10 @@
   <!-- ===== Soorten vrijwilligers ===== -->
   <section class="section section-surface" id="soorten">
     <div class="container">
-      <p class="eyebrow center">Ons team</p>
+      <p class="eyebrow center">Doe mee</p>
       <h2 class="center">De soorten vrijwilligers</h2>
-      <p class="section-intro center">
-        Bij Een Tweede Thuis staat een vast team zij aan zij met de jongeren. Het bestaat
-        uit drie rollen.
-      </p>
 
-      <div class="vol-grid vol-grid-3">
-        <article class="card card-accent vol">
-          <span class="vol-icon">🧑‍🏫</span>
-          <h3>Orthopedagoog</h3>
-        </article>
-
+      <div class="vol-grid vol-grid-2">
         <article class="card card-accent vol">
           <span class="vol-icon">🤝</span>
           <h3>Vrijwilliger</h3>
@@ -85,16 +76,16 @@
     </div>
   </section>
 
-  <!-- ===== Aanmeldformulier ===== -->
+  <!-- ===== Aanmelden ===== -->
   <section class="section" id="aanmelden">
     <div class="container form-wrap">
-      <p class="eyebrow center">Doe mee</p>
       <h2 class="center">Stel je kandidaat als vrijwilliger</h2>
-      <p class="section-intro center">
-        Laat je gegevens achter en vertel ons waar je graag bij helpt. We nemen contact met je op.
-      </p>
 
-      <form name="vrijwilligers" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/bedankt.html" class="vol-form card">
+      <div class="form-cta" id="formCta">
+        <button type="button" class="btn-primary" data-reveal-form>Stel je kandidaat</button>
+      </div>
+
+      <form name="vrijwilligers" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/bedankt.html" class="vol-form card" id="volForm" hidden>
         <input type="hidden" name="form-name" value="vrijwilligers" />
         <p class="hp-field">
           <label>Laat dit veld leeg: <input name="bot-field" /></label>
@@ -122,26 +113,11 @@
           </div>
         </div>
 
-        <div class="field">
-          <label for="rol">Waar help je graag bij? *</label>
-          <select id="rol" name="rol" required>
-            <option value="" disabled selected>Kies een rol…</option>
-            <option>Vrijwilliger</option>
-            <option>Taalbuddy</option>
-            <option>Nog niet zeker</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>Wanneer ben je beschikbaar?</label>
-          <div class="checkbox-grid">
-            <label class="check"><input type="checkbox" name="beschikbaarheid" value="Maandag" /> Maandag</label>
-            <label class="check"><input type="checkbox" name="beschikbaarheid" value="Dinsdag" /> Dinsdag</label>
-            <label class="check"><input type="checkbox" name="beschikbaarheid" value="Woensdag" /> Woensdag</label>
-            <label class="check"><input type="checkbox" name="beschikbaarheid" value="Donderdag" /> Donderdag</label>
-            <label class="check"><input type="checkbox" name="beschikbaarheid" value="Vrijdag" /> Vrijdag</label>
-          </div>
-        </div>
+        <fieldset class="field rol-fieldset">
+          <legend>Welk type vrijwilliger wil je zijn? *</legend>
+          <label class="check"><input type="radio" name="rol" value="Vrijwilliger" required /> Vrijwilliger</label>
+          <label class="check"><input type="radio" name="rol" value="Taalbuddy" /> Taalbuddy</label>
+        </fieldset>
 
         <div class="field">
           <label for="motivatie">Vertel ons kort iets over jezelf en je motivatie</label>
@@ -200,6 +176,20 @@
     });
     links.querySelectorAll('a').forEach(a =>
       a.addEventListener('click', () => links.classList.remove('open'))
+    );
+
+    // Formulier pas tonen na klik op "Stel je kandidaat"
+    const volForm = document.getElementById('volForm');
+    const formCta = document.getElementById('formCta');
+    function revealForm() {
+      volForm.hidden = false;
+      formCta.style.display = 'none';
+      document.getElementById('aanmelden').scrollIntoView({ behavior: 'smooth' });
+      const first = volForm.querySelector('input, textarea, select');
+      if (first) setTimeout(() => first.focus(), 400);
+    }
+    document.querySelectorAll('[data-reveal-form]').forEach(btn =>
+      btn.addEventListener('click', e => { e.preventDefault(); revealForm(); })
     );
   </script>
 </body>

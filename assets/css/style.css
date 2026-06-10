@@ -530,8 +530,26 @@ h2.center { margin-bottom: var(--space-xs); }
 .step h3, .vol h3 { overflow-wrap: break-word; }
 .vol p { color: var(--color-text); font-size: 0.98rem; }
 
+.vol-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 640px;
+  margin-inline: auto;
+}
+
 /* Formulier */
 .form-wrap { max-width: 760px; }
+.form-cta { text-align: center; margin-top: var(--space-md); }
+.vol-form[hidden] { display: none; }
+.rol-fieldset { border: none; padding: 0; }
+.rol-fieldset legend {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: var(--color-text);
+  padding: 0;
+}
+.rol-fieldset .check { margin-bottom: 6px; }
 .vol-form { margin-top: var(--space-md); padding: var(--space-lg); }
 .form-row {
   display: grid;
