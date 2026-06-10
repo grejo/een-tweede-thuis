@@ -526,14 +526,14 @@ h2.center { margin-bottom: var(--space-xs); }
 }
 .vol { text-align: center; }
 .vol-icon { font-size: 2.4rem; display: block; margin-bottom: var(--space-xs); }
-.vol h3 { color: var(--color-secondary); margin-bottom: 6px; overflow-wrap: break-word; }
+.vol h3 { color: var(--color-secondary); margin-bottom: var(--space-sm); overflow-wrap: break-word; }
 .step h3, .vol h3 { overflow-wrap: break-word; }
+.vol p { text-align: left; color: var(--color-text); font-size: 0.98rem; margin-bottom: var(--space-sm); }
+.vol p:last-child { margin-bottom: 0; font-weight: 600; color: var(--color-secondary); }
 .vol p { color: var(--color-text); font-size: 0.98rem; }
 
 .vol-grid-2 {
   grid-template-columns: repeat(2, 1fr);
-  max-width: 640px;
-  margin-inline: auto;
 }
 
 /* Formulier */
