@@ -482,3 +482,135 @@ h2.center { margin-bottom: var(--space-xs); }
 @media (max-width: 540px) {
   .team-grid, .facts-grid { grid-template-columns: 1fr; }
 }
+
+/* ===================================================================
+   Vrijwilligerspagina
+   =================================================================== */
+
+/* Sub-hero (zonder beeldkolom) */
+.hero-sub { padding-bottom: calc(var(--space-xl) + 20px); }
+.hero-sub .lead { max-width: 60ch; }
+.hero-sub .hero-actions { margin-top: var(--space-md); }
+
+/* Stappen */
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+.step { position: relative; padding-top: calc(var(--space-md) + 18px); }
+.step-num {
+  position: absolute;
+  top: -22px; left: var(--space-md);
+  width: 46px; height: 46px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gradient-warm);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lift);
+}
+.step h3 { color: var(--color-secondary); margin-bottom: 6px; }
+.step p { color: var(--color-text); font-size: 0.98rem; }
+
+/* Soorten vrijwilligers */
+.vol-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+.vol { text-align: center; }
+.vol-icon { font-size: 2.4rem; display: block; margin-bottom: var(--space-xs); }
+.vol h3 { color: var(--color-secondary); margin-bottom: 6px; overflow-wrap: break-word; }
+.step h3, .vol h3 { overflow-wrap: break-word; }
+.vol p { color: var(--color-text); font-size: 0.98rem; }
+
+/* Formulier */
+.form-wrap { max-width: 760px; }
+.vol-form { margin-top: var(--space-md); padding: var(--space-lg); }
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+.field { margin-bottom: var(--space-md); display: flex; flex-direction: column; }
+.field label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: var(--color-text);
+}
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  width: 100%;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.field textarea { resize: vertical; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(244, 121, 31, 0.15);
+}
+
+.checkbox-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px var(--space-md);
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.check input { width: auto; accent-color: var(--color-primary); transform: scale(1.2); }
+.consent {
+  margin: var(--space-sm) 0 var(--space-md);
+  font-size: 0.95rem;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+.consent input { margin-top: 3px; }
+.form-submit { width: 100%; font-size: 1.05rem; }
+
+/* Netlify honeypot — verborgen voor gebruikers */
+.hp-field { position: absolute; left: -5000px; }
+
+/* Bedankpagina */
+.thanks { text-align: center; }
+.thanks .lead, .thanks .hero-actions { margin-inline: auto; }
+.thanks .hero-actions { justify-content: center; }
+.thanks-logo {
+  width: 120px;
+  margin: 0 auto var(--space-sm);
+  filter: drop-shadow(0 12px 24px rgba(244,121,31,0.25));
+}
+
+@media (max-width: 900px) {
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .vol-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .steps, .vol-grid, .form-row { grid-template-columns: 1fr; }
+  .vol-form { padding: var(--space-md); }
+}
